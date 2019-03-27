@@ -13,13 +13,12 @@ public class Main extends Application {
 	public void start(Stage primaryStage) {
 
 		try {
+			
 			FXMLLoader loader = new FXMLLoader(getClass().getResource("SegreteriaStudenti.fxml"));
-			BorderPane root = (BorderPane) loader.load();
-
+			BorderPane root = (BorderPane)loader.load();
 			SegreteriaStudentiController controller = loader.getController();
 			Model model = new Model();
 			controller.setModel(model);
-
 			Scene scene = new Scene(root);
 			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 			primaryStage.setScene(scene);

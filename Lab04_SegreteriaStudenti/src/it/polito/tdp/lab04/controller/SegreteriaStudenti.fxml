@@ -41,8 +41,8 @@
                <children>
                   <Label layoutX="14.0" layoutY="14.0" text="Studente:" />
                   <TextField fx:id="txtMatricola" layoutX="91.0" layoutY="9.0" prefHeight="27.0" prefWidth="82.0" promptText="Matricola" />
-                  <TextField fx:id="txtNome" layoutX="195.0" layoutY="9.0" prefHeight="27.0" prefWidth="165.0" promptText="Nome" />
-                  <TextField fx:id="txtCognome" layoutX="382.0" layoutY="9.0" prefHeight="27.0" prefWidth="165.0" promptText="Cognome" />
+                  <TextField fx:id="txtNome" editable="false" layoutX="195.0" layoutY="9.0" prefHeight="27.0" prefWidth="165.0" promptText="Nome" />
+                  <TextField fx:id="txtCognome" editable="false" layoutX="382.0" layoutY="9.0" prefHeight="27.0" prefWidth="165.0" promptText="Cognome" />
                   <Button fx:id="btnIscrivi" layoutX="493.0" layoutY="51.0" mnemonicParsing="false" onAction="#doIscrivi" text="Iscrivi" />
                   <Button fx:id="btnCercaCorsi" layoutX="14.0" layoutY="51.0" mnemonicParsing="false" onAction="#doCercaCorsi" text="Cerca corsi" />
                </children>
