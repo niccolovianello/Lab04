@@ -1,14 +1,65 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<BorderPane prefHeight="442.0" prefWidth="561.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="it.polito.tdp.lab04.controller.SegreteriaStudentiController">
+<BorderPane prefHeight="530.0" prefWidth="557.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="it.polito.tdp.lab04.controller.SegreteriaStudentiController">
    <top>
-      <Label text="Lab3_Segreteria Studenti" BorderPane.alignment="CENTER">
-         <BorderPane.margin>
-            <Insets bottom="20.0" top="10.0" />
-         </BorderPane.margin></Label>
+      <Pane prefHeight="67.0" prefWidth="561.0" BorderPane.alignment="CENTER">
+         <children>
+            <Label contentDisplay="CENTER" layoutX="137.0" layoutY="19.0" text="Lab3_Segreteria Studenti" textFill="#d01111">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
    </top>
+   <center>
+      <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
+         <children>
+            <Pane prefHeight="98.0" prefWidth="561.0">
+               <children>
+                  <Label layoutX="14.0" layoutY="6.0" text="Corso:">
+                     <padding>
+                        <Insets top="10.0" />
+                     </padding>
+                  </Label>
+                  <ChoiceBox layoutX="88.0" layoutY="14.0" prefHeight="27.0" prefWidth="286.0" />
+                  <Button fx:id="btnCercaIscritti" layoutX="14.0" layoutY="57.0" mnemonicParsing="false" onAction="#doCercaIscritti" text="Cerca iscritti corso" />
+               </children>
+            </Pane>
+            <Pane prefHeight="101.0" prefWidth="561.0">
+               <children>
+                  <Label layoutX="14.0" layoutY="14.0" text="Studente:" />
+                  <TextField fx:id="txtMatricola" layoutX="91.0" layoutY="9.0" prefHeight="27.0" prefWidth="82.0" promptText="Matricola" />
+                  <TextField fx:id="txtNome" layoutX="195.0" layoutY="9.0" prefHeight="27.0" prefWidth="165.0" promptText="Nome" />
+                  <TextField fx:id="txtCognome" layoutX="382.0" layoutY="9.0" prefHeight="27.0" prefWidth="165.0" promptText="Cognome" />
+                  <Button fx:id="btnIscrivi" layoutX="493.0" layoutY="51.0" mnemonicParsing="false" onAction="#doIscrivi" text="Iscrivi" />
+                  <Button fx:id="btnCercaCorsi" layoutX="14.0" layoutY="51.0" mnemonicParsing="false" onAction="#doCercaCorsi" text="Cerca corsi" />
+               </children>
+            </Pane>
+            <TextArea fx:id="txtResult" prefHeight="200.0" prefWidth="200.0">
+               <VBox.margin>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </VBox.margin>
+            </TextArea>
+         </children>
+      </VBox>
+   </center>
+   <bottom>
+      <Pane prefHeight="61.0" prefWidth="588.0" BorderPane.alignment="CENTER">
+         <children>
+            <Button fx:id="btnReset" layoutX="490.0" layoutY="17.0" mnemonicParsing="false" onAction="#doReset" text="Reset" />
+         </children>
+      </Pane>
+   </bottom>
 </BorderPane>
