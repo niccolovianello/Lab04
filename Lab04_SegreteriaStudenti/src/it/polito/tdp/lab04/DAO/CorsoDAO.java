@@ -11,6 +11,7 @@ import it.polito.tdp.lab04.model.Corso;
 import it.polito.tdp.lab04.model.Studente;
 
 public class CorsoDAO {
+	
 
 	/*
 	 * Ottengo tutti i corsi salvati nel Db
@@ -33,41 +34,65 @@ public class CorsoDAO {
 				int numeroCrediti = rs.getInt("crediti");
 				String nome = rs.getString("nome");
 				int periodoDidattico = rs.getInt("pd");
-
-				System.out.println(codins + " " + numeroCrediti + " " + nome + " " + periodoDidattico);
-
-				// Crea un nuovo JAVA Bean Corso
-				// Aggiungi il nuovo oggetto Corso alla lista corsi
+				
+				Corso corso = new Corso(codins, numeroCrediti, nome, periodoDidattico);
+				corsi.add(corso);
 			}
 
 			return corsi;
 
 		} catch (SQLException e) {
-			// e.printStackTrace();
-			throw new RuntimeException("Errore Db");
+			throw new RuntimeException("Errore DB");
 		}
-	}
-
-	/*
-	 * Dato un codice insegnamento, ottengo il corso
-	 */
-	public void getCorso(Corso corso) {
-		// TODO
 	}
 
 	/*
 	 * Ottengo tutti gli studenti iscritti al Corso
 	 */
-	public void getStudentiIscrittiAlCorso(Corso corso) {
-		// TODO
+	public List<Integer> getStudentiIscrittiAlCorso(String codins) {
+		
+		//String codins = c.getCodins();
+		final String sql = "SELECT * FROM iscrizione WHERE codins = "+"'"+codins+"'";
+
+		List<Integer> matricole = new LinkedList<Integer>();
+
+		try {
+			Connection conn = ConnectDB.getConnection();
+			PreparedStatement st = conn.prepareStatement(sql);
+
+			ResultSet rs = st.executeQuery();
+
+			while (rs.next()) {
+
+				int matricola = rs.getInt("matricola");
+				matricole.add(matricola);
+			}
+
+			return matricole;
+
+		} catch (SQLException e) {
+			throw new RuntimeException("Errore DB");
+		}
 	}
 
 	/*
 	 * Data una matricola ed il codice insegnamento, iscrivi lo studente al corso.
 	 */
-	public boolean inscriviStudenteACorso(Studente studente, Corso corso) {
-		// TODO
-		// ritorna true se l'iscrizione e' avvenuta con successo
-		return false;
+	public boolean iscriviStudenteACorso(Studente studente, Corso corso) {
+		
+		final String sql = "INSERT INTO iscrizione (matricola, codins) VALUES ("+studente.getMatricola()+", '"+corso.getCodins()+"')";
+
+		try {
+			Connection conn = ConnectDB.getConnection();
+			PreparedStatement st = conn.prepareStatement(sql);
+
+			ResultSet rs = st.executeQuery(sql);
+			return true;
+
+		} catch (SQLException e) {
+			throw new RuntimeException("Errore DB");
+		}
 	}
+	
+
 }

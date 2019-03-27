@@ -18,7 +18,6 @@ public class ConnectDB {
 			return connection;
 
 		} catch (SQLException e) {
-
 			e.printStackTrace();
 			throw new RuntimeException("Cannot get a connection " + jdbcUrl, e);
 		}
