@@ -80,13 +80,15 @@ public class CorsoDAO {
 	 */
 	public boolean iscriviStudenteACorso(Studente studente, Corso corso) {
 		
-		final String sql = "INSERT INTO iscrizione (matricola, codins) VALUES ("+studente.getMatricola()+", '"+corso.getCodins()+"')";
+		final String sql = "INSERT INTO iscrizione (matricola, codins) VALUES (?, ?)";
 
 		try {
 			Connection conn = ConnectDB.getConnection();
 			PreparedStatement st = conn.prepareStatement(sql);
 
-			ResultSet rs = st.executeQuery(sql);
+			st.setInt(1, studente.getMatricola());
+			st.setString(2, corso.getCodins());
+			st.execute();
 			return true;
 
 		} catch (SQLException e) {

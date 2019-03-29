@@ -87,7 +87,10 @@ public class SegreteriaStudentiController {
 	    		
 	    	}
 	   	}
-    	catch(NullPointerException e) {	    		
+    	catch(NullPointerException npe) {	    		
+    		txtResult.appendText("Lo studente cercato non è presente nel database.\n");
+	    }
+	    catch(NumberFormatException nfe) {	    		
     		txtResult.appendText("Lo studente cercato non è presente nel database.\n");
 	    }
 
@@ -103,11 +106,11 @@ public class SegreteriaStudentiController {
 	   		txtNome.appendText(s.getNome());
 	   		txtCognome.appendText(s.getCognome());
 	   	}
-    	catch(NumberFormatException e) {
+    	catch(NumberFormatException nfe) {
     		txtResult.appendText("Il numero di matricola può contenere solo interi.\n");
     	}
 	    	
-	    catch(NullPointerException np) {
+	    catch(NullPointerException npe) {
 	   		txtResult.appendText("Il numero di matricola inserito non appartiene a nessuno studente.\n");
 	   	}
 	    	
@@ -132,7 +135,7 @@ public class SegreteriaStudentiController {
     		}
     			
     	}
-    	catch(NullPointerException e) {
+    	catch(NullPointerException npe) {
     		txtResult.appendText("Scegliere un corso.\n");
     	}
     }
@@ -146,9 +149,19 @@ public class SegreteriaStudentiController {
     			txtResult.appendText("Iscrizione effettuata con successo.\n");
     		}
     		
+    		else {
+    			txtResult.appendText("Iscrizione non effettuata.\n");
+    		}
+
     	}
-    	catch(NullPointerException e) {
+    	catch(NullPointerException npe) {
     		txtResult.appendText("Lo studente o il corso cercato non sono presenti nel database.\\n");
+    	}
+    	catch(NumberFormatException nfe) {
+    		txtResult.appendText("Il numero di matricola può contenere solo interi.\n");
+    	}
+    	catch(Exception nfe) {
+    		txtResult.appendText("Studente già iscritto al corso selezionato.\n");
     	}
 
     }
